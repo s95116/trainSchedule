@@ -7,12 +7,15 @@
 <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
 <link rel="stylesheet" type="text/css" href="assets/css/style.css">
-<link href='https://fonts.googleapis.com/css?family=Catamaran:400,500' rel='stylesheet' type='text/css'>
+<link rel="stylesheet" type="text/css" href='https://fonts.googleapis.com/css?family=Catamaran:400,500' >
 
-<!-- jQuery & AJAX CDN  -->
-<script src="https://code.jquery.com/jquery-2.2.4.min.js" ></script>
+<!-- jQuery, AJAX, Firebase CDN  -->
+<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.9/angular.min.js"></script>
+<script src="https://cdn.firebase.com/js/client/2.4.2/firebase.js"></script>
 
+<!-- Moment JS -->
+<script src="https://cdn.jsdelivr.net/momentjs/2.12.0/moment.min.js"></script>
 
 </head>
 <body>
@@ -20,25 +23,62 @@
 <div class="container">
 
 	<div class="row>">
-		<div class="col-md-11">
+		<div class="col-md-12">
 			<div class="jumbotron">
 			  <h1>Train Schedule</h1>
 			</div><!-- End of jumbotron -->
-		</div><!-- End of col-md-11 -->
+		</div><!-- End of col-md-12 -->
 	</div><!-- End of row -->
 
 	<div class="row">
-		<div class="col-md-11">
+		<div class="col-md-12">
 			<div class="panel panel-default">
-  		<div class="panel-heading">
-    		<h3 class="panel-title">Panel title</h3>
-  		</div>
-  		<div class="panel-body">
-    		Panel content
-  		</div>
-			</div>
-		</div><!-- End of col-md-11 -->	
+	  			<div class="panel-heading">
+	    			<h3 class="panel-title">Current Train Schedule</h3>
+	  			</div>
+	  			
+	  			<div class="panel-body">
+	    			<table class="table">
+						<tr>
+							<th>Train Name</th>
+							<th>Destination</th>
+							<th>Frequency (min)</th>
+							<th>Next Arrival</th>
+							<th>Minutes Away</th>
+						</tr>
+					</table>
+	  			</div>
+			</div><!-- End of panel panel-default -->
+		</div><!-- End of col-md-12 -->	
 	</div><!-- End of row -->
+
+	<div class="addEmployee">
+		<div class="panel panel-default">
+		<div class="panel-heading">
+			<h3 class="panel-title">Add Train</h3>
+		</div>
+
+		<div class="panel-body">
+			<div class="form-group">
+			<form>
+				<label for="trainName">Train Name</label> 
+				<input class="form-control" id="trainNameInput" placeholder="Train Name" type="text"> 
+
+				<label for="destination">Destination</label> 
+				<input class="form-control" id="destinationInput" placeholder="Destination" type="text">
+				
+				<label for="trainTime">First Train Time (HH:mm - military time)</label> 
+				<input class="form-control" id="trainTimeInput" placeholder="">
+				
+				<label for="frequency">Frequency (min)</label>
+				<input class="form-control" id="frequencyInput" placeholder="Frequency (min)" type="text">
+			</form>
+
+				<button class="btn btn-default" id="addTrain" type="submit">Submit</button>
+			</div>
+		</div>
+		</div>
+	</div>
 </div><!--End of container -->
 
 

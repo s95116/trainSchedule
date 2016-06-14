@@ -9,3 +9,7 @@ body{
 	text-align: center;
 }
 
+#trainNameInput, #destinationInput, #trainTimeInput, #frequencyInput{
+	margin-bottom: 15px;
+}
+
