@@ -63,13 +63,6 @@ $("#addTrain").on("click", function(){
 		var tFrequency = 3;
 		var firstTime = "07:30"; // Time is 7:30 AM(time is in military time)
 
-
-		// Employee Info
-		console.log(trainName);
-		console.log(destination);
-		console.log(trainTime);
-		console.log(frequency);
-
 		// First Time (pushed back 1 year to make sure it comes before current time)
 		var firstTimeConverted = moment(firstTime,"hh:mm").subtract(1, "years");
 		console.log(firstTimeConverted);
@@ -95,20 +88,20 @@ $("#addTrain").on("click", function(){
 		console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"))
 
 		// Add each train's data into the table
-		$("#train-table > tbody").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + trainTime + "</td><td>");
+		$("#train-table > tbody").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + trainTime + "</td><td>" + nextTrain + "</td><td>" + tMinutesTillTrain + "</td><td>");
 
-		var tableRow = $("<tr>");
-		var tableData1 = $("<td>");
-		tableData1.html(empName);
-		var tableData2 = $("<td>");
-		tableData2.html(empRole);
-		var tableData3 = $("<td>");
-		var tableData4 = $("<td>");
-		tableRow.append(tableData1);
-		tableRow.append(tableData2);
-		tableRow.append(tableData3);
-		tableRow.append(tableData4);
-		$("#train-table > tbody").append(tableRow);
+		// var tableRow = $("<tr>");
+		// var tableData1 = $("<td>");
+		// tableData1.html(empName);
+		// var tableData2 = $("<td>");
+		// tableData2.html(empRole);
+		// var tableData3 = $("<td>");
+		// var tableData4 = $("<td>");
+		// tableRow.append(tableData1);
+		// tableRow.append(tableData2);
+		// tableRow.append(tableData3);
+		// tableRow.append(tableData4);
+		// $("#train-table > tbody").append(tableRow);
 
 	}); //End of trainData function
 
