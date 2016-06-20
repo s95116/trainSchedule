@@ -58,7 +58,7 @@ $("#addTrain").on("click", function(){
 		
 
 		// Sets initial time
-		// var firstTime = "07:30"; // Time is 7:30 AM(time is in military time)
+		var firstTime = "07:30"; // Time is 7:30 AM(time is in military time)
 
 		//Gets current time and formats it in hh:mm
 		var currentTime = moment();
@@ -77,7 +77,7 @@ $("#addTrain").on("click", function(){
 		console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
 
 		// Next Train
-		var nextTrain = moment().add(tMinutesTillTrain, "minutes")
+		var nextTrain = moment(nextTrain).format("hh:mm");
 		console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"))
 
 		// Add each train's data into the table
