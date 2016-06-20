@@ -12,8 +12,6 @@ $("#addTrain").on("click", function(){
 	var destination = $("#destinationInput").val().trim();
 	var trainTime = moment($("#trainTimeInput").val().trim(), "DD/MM/YY").format("X");
 	var frequency = $("#frequencyInput").val().trim();
-	var convertedDate = moment(new Date(randomDate));
-	var randomDate = "02/23/1999";
 
 	// Creates new variable that holds time-train data
 	var newTrain = {
@@ -59,28 +57,23 @@ $("#addTrain").on("click", function(){
 		var frequency = childSnapshot.val().frequency;
 		
 
-		// Base time calculations
-		var tFrequency = 3;
-		var firstTime = "07:30"; // Time is 7:30 AM(time is in military time)
+		// Sets initial time
+		// var firstTime = "07:30"; // Time is 7:30 AM(time is in military time)
 
-		// First Time (pushed back 1 year to make sure it comes before current time)
-		var firstTimeConverted = moment(firstTime,"hh:mm").subtract(1, "years");
-		console.log(firstTimeConverted);
-
-		// Current Time
+		//Gets current time and formats it in hh:mm
 		var currentTime = moment();
 		console.log("CURRENT TIME: " + moment(currentTime).format("hh:mm"));
 
 		// Difference between the times
-		var diffTime = moment().diff(moment(firstTimeConverted), "minutes");
+		var diffTime = moment().diff(moment(currentTime), "minutes");
 		console.log("DIFFERENCE IN TIME: " + diffTime);
 
 		// Time apart (remainder)
-		var tRemainder = diffTime % tFrequency;
+		var tRemainder = diffTime % frequency;
 		console.log(tRemainder);
 
 		// Minute Until Train
-		var tMinutesTillTrain = tFrequency - tRemainder;
+		var tMinutesTillTrain = frequency - tRemainder;
 		console.log("MINUTES TILL TRAIN: " + tMinutesTillTrain);
 
 		// Next Train
@@ -88,20 +81,7 @@ $("#addTrain").on("click", function(){
 		console.log("ARRIVAL TIME: " + moment(nextTrain).format("hh:mm"))
 
 		// Add each train's data into the table
-		$("#train-table > tbody").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + trainTime + "</td><td>" + nextTrain + "</td><td>" + tMinutesTillTrain + "</td><td>");
-
-		// var tableRow = $("<tr>");
-		// var tableData1 = $("<td>");
-		// tableData1.html(empName);
-		// var tableData2 = $("<td>");
-		// tableData2.html(empRole);
-		// var tableData3 = $("<td>");
-		// var tableData4 = $("<td>");
-		// tableRow.append(tableData1);
-		// tableRow.append(tableData2);
-		// tableRow.append(tableData3);
-		// tableRow.append(tableData4);
-		// $("#train-table > tbody").append(tableRow);
+		$("#train-table > tbody").append("<tr><td>" + trainName + "</td><td>" + destination + "</td><td>" + tMinutesTillTrain + "</td><td>" + nextTrain + "</td><td>" + trainTime + "</td><td>");
 
 	}); //End of trainData function
 
